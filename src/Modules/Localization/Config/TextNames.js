@@ -1,0 +1,63 @@
+export const texts = {
+    settings: 'settings',
+    eMail:"email",
+    password:"password",
+    colorTheme:"colorTheme",
+    dark:"dark",
+    light:"light",
+    language:"language",
+    english:"english",
+    turkish:"turkish",
+    signOut:"signOut",
+    login:"login",
+    username:"username",
+    signUp:"signUp",
+    appname: "appname",
+    homeTitle:"homeTitle",
+    alert: "alert",
+    alert1: "alert1",
+    alert2: "alert2",
+};
+
+export const english={
+    [texts.settings]:"Settings",
+    [texts.eMail]:"E-Mail",
+    [texts.password]:"Password",
+    [texts.colorTheme]:"Color Theme",
+    [texts.language]:"Language",
+    [texts.english]:"English",
+    [texts.turkish]:"Türkçe",    
+    [texts.login]:"Login",
+    [texts.dark]:"Dark Mode",
+    [texts.light]:"Light Mode",
+    [texts.signOut]:"Sign Out",
+    [texts.username]:"Username",
+    [texts.signUp]:"Sign Up",
+    [texts.appname]: "Episodes and Characters",
+    [texts.homeTitle]:"Episodes",
+    [texts.alert]: "Warning",
+    [texts.alert1]: "Please fill in all the required fields.",
+    [texts.alert2]: "Please check your e-mail address."
+
+};
+
+export const turkish ={
+    [texts.settings]:"Ayarlar",
+    [texts.eMail]:"E-Mail",
+    [texts.password]:"Şifre",
+    [texts.colorTheme]:"Renk Modu",
+    [texts.language]:"Diller",
+    [texts.english]:"English",
+    [texts.turkish]:"Türkçe",
+    [texts.login]:"Giriş Yap",
+    [texts.dark]:"Karanlık Mod",
+    [texts.light]:"Aydınlık Mod",
+    [texts.signOut]:"Çıkış Yap",
+    [texts.username]:"Kullanıcı Adı",
+    [texts.signUp]:"Kayıt Ol",
+    [texts.appname]:"Bölümler ve Karakterler",
+    [texts.homeTitle]:"Bölümler",
+    [texts.alert]: "Uyarı",
+    [texts.alert1]: "Lütfen tüm alanları doldurun.",
+    [texts.alert2]: "Lütfen e-posta adresinizi kontrol edin."
+};
