@@ -17,6 +17,8 @@ export const texts = {
     alert: "alert",
     alert1: "alert1",
     alert2: "alert2",
+    season: "season",
+    episode: "episode",
 };
 
 export const english={
@@ -37,7 +39,9 @@ export const english={
     [texts.homeTitle]:"Episodes",
     [texts.alert]: "Warning",
     [texts.alert1]: "Please fill in all the required fields.",
-    [texts.alert2]: "Please check your e-mail address."
+    [texts.alert2]: "Please check your e-mail address.",
+    [texts.season]: "Season: ",
+    [texts.episode]: "Episode: ",
 
 };
 
@@ -59,5 +63,7 @@ export const turkish ={
     [texts.homeTitle]:"Bölümler",
     [texts.alert]: "Uyarı",
     [texts.alert1]: "Lütfen tüm alanları doldurun.",
-    [texts.alert2]: "Lütfen e-posta adresinizi kontrol edin."
+    [texts.alert2]: "Lütfen e-posta adresinizi kontrol edin.",
+    [texts.season]: "Sezon: ",
+    [texts.episode]: "Bölüm: ",
 };
