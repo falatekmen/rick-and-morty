@@ -14,7 +14,7 @@ const styles = (Colors) => StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         paddingBottom: Metrics.width * 0.03,
-        paddingHorizontal: Metrics.marginHorizontal,
+        paddingHorizontal: Metrics.width * 0.05,
     },
     inputsContainer: {
         minHeight: Metrics.width * 0.4,

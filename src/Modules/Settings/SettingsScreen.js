@@ -35,11 +35,11 @@ const SettingsScreen = props => {
 
     return (
         <View style={styles.container}>
-            <SafeAreaView style={{flex:1}}>
-                <Text style={styles.text1}>
+            <SafeAreaView style={styles.SafeAreaView}>
+                <Text style={styles.displayName}>
                     {user.displayName}
                 </Text>
-                <Text style={styles.text2}>
+                <Text style={styles.email}>
                     {user.email}
                 </Text>
                 <View style={styles.optionContainer}>
@@ -54,11 +54,13 @@ const SettingsScreen = props => {
                         menuTitle={loc.t(texts.language)}
                         onSelect={_onSelect_Locale}
                         selectedOptionKey={currentLocale}
-                    />   
+                    />
                 </View>
-                <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
-                    <Text style={styles.toucableText}>{loc.t(texts.signOut)}</Text>
-                </TouchableOpacity>
+                <View style={styles.signOutContainer}>
+                    <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
+                        <Text style={styles.signOutText}>{loc.t(texts.signOut)}</Text>
+                    </TouchableOpacity>
+                </View>
             </SafeAreaView>
         </View>
     );

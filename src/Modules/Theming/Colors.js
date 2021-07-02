@@ -1,21 +1,18 @@
 // hex
 const constantColors = {
     white: '#FFFFFF',
-    black: '#2D2D2D',
+    black: '#2D2D2D', 
     transparent: 'transparent',
     blue: '#189ad3', 
     darkblack: 'black',
     headerColorLight: '#FF9900',
     headerColorDark: 'black',  
-    appBackGroundLight: '#E5DFCA',
-    appBackGroundDark: '#061602',
+    appBackgroundLight: '#E5DFCA',
+    appBackgroundDark: '#061602',
 
     greys: {
-        1: '#383838',
+        1: '#BCBCBC',
         2: '#ACACAC',
-        3: '#868686',
-        4: '#BCBCBC',
-        5: '#E0E0E0', //checkbox border color
     },
 };
 
@@ -50,11 +47,12 @@ export const colorNames = {
     },
     home: {
         headerColor: 'home/headerColor',
-        homeBackGround: 'home/homeBackGround',
-        border: "home/border", 
-        background: "home/background",
+        homeBackground: 'home/homeBackGround', 
         headerText:"home/headerText", 
-
+        buttonBorder:"home/buttonBorder",
+        buttonBackground:"home/episodeButton", 
+        underline: "home/underline",
+        episodeText: "home/episodeText"
     },
     settings: {
         background: 'settings/background',
@@ -74,7 +72,7 @@ export const colorNames = {
 
 export const darkColors = {
     // auth
-    [colorNames.auth.background]: constantColors.appBackGroundDark, 
+    [colorNames.auth.background]: constantColors.appBackgroundDark, 
     [colorNames.auth.paleButtonText]: constantColors.white,
     [colorNames.auth.appNameText]: constantColors.blue,
     [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.white, 40),
@@ -88,11 +86,15 @@ export const darkColors = {
 
     //home
     [colorNames.home.headerColor]: constantColors.headerColorDark,
-    [colorNames.home.homeBackGround]: constantColors.appBackGroundDark,
+    [colorNames.home.homeBackground]: constantColors.appBackgroundDark,
     [colorNames.home.headerText]: constantColors.white,
+    [colorNames.home.buttonBorder]: constantColors.headerColorDark,
+    [colorNames.home.buttonBackground]: constantColors.greys[2],
+    [colorNames.home.underline]: constantColors.darkblack,
+    [colorNames.home.episodeText]: constantColors.darkblack,
     
     //settings
-    [colorNames.settings.background]: constantColors.appBackGroundDark,
+    [colorNames.settings.background]: constantColors.appBackgroundDark,
     [colorNames.settings.radioButtonSelected]: constantColors.blue,
     [colorNames.settings.radioButtonUnselected]: constantColors.white,
     [colorNames.settings.signOutBorder]: constantColors.black,
@@ -108,7 +110,7 @@ export const darkColors = {
 
 export const lightColors = {
     // auth
-    [colorNames.auth.background]: constantColors.appBackGroundLight, 
+    [colorNames.auth.background]: constantColors.appBackgroundLight, 
     [colorNames.auth.paleButtonText]: constantColors.black,
     [colorNames.auth.appNameText]: constantColors.blue,
     [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.black, 50),
@@ -122,17 +124,21 @@ export const lightColors = {
 
     //home
     [colorNames.home.headerColor]: constantColors.headerColorLight,
-    [colorNames.home.homeBackGround]: constantColors.appBackGroundLight,
+    [colorNames.home.homeBackground]: constantColors.appBackgroundLight,
     [colorNames.home.headerText]: constantColors.white,
+    [colorNames.home.buttonBorder]: constantColors.headerColorLight,
+    [colorNames.home.buttonBackground]: constantColors.white,
+    [colorNames.home.underline]: constantColors.darkblack,
+    [colorNames.home.episodeText]: constantColors.darkblack,
 
     //settings
-    [colorNames.settings.background]: constantColors.appBackGroundLight, ///*
+    [colorNames.settings.background]: constantColors.appBackgroundLight, 
     [colorNames.settings.radioButtonSelected]: constantColors.blue,
     [colorNames.settings.radioButtonUnselected]: constantColors.black,
-    [colorNames.settings.signOutBorder]: constantColors.blue,
+    [colorNames.settings.signOutBorder]: constantColors.headerColorLight,
     [colorNames.settings.signOutText]: constantColors.black,
     [colorNames.settings.signOutButtonBackground]: constantColors.white,
-    [colorNames.settings.titleColor]: constantColors.blue,
+    [colorNames.settings.titleColor]: constantColors.black,
     [colorNames.settings.username]: constantColors.black,
     [colorNames.settings.eMail]: constantColors.black,
     [colorNames.settings.tintColor]: constantColors.white,

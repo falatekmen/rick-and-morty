@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from "../Settings/SettingsScreen";
 import HomeScreen from '../HomeScreen/HomeScreen';
-import SettingsIcon from '../Settings/SettingsIcon';
+import SettingsIcon from './SettingsIcon';
 import { texts, useLocalization } from "../Localization";
 import { colorNames, useThemedValues } from "../Theming";
 import getStyles from "./Styles/HomeNavigationStyles";
@@ -41,7 +41,6 @@ const HomeNavigation = () => {
                     title: loc.t(texts.settings),
                     headerStyle: {
                         backgroundColor: colors[colorNames.settings.headerColor]
-
                     },
                     headerTitleAlign: "center",
                     headerTintColor: colors[colorNames.settings.tintColor],

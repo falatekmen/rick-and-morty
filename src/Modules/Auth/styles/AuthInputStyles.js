@@ -5,7 +5,7 @@ import {colorNames} from '../../Theming'
 const styles = (Colors) => StyleSheet.create({
     inputContainer: {
         flex:1,
-        paddingHorizontal: Metrics.textMargin,
+        paddingHorizontal: Metrics.width * 0.03,
         backgroundColor: Colors[colorNames.auth.inputBackground]
     },
     input: {

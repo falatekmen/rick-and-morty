@@ -7,9 +7,7 @@ const REDUX_PERSIST = {
   storeConfig: {
     key: 'primary',
     storage: AsyncStorage,
-    blacklist: ['nav', 'app'],
     whitelist: [
-      'theming',
       USER_NAMESPACE
     ],
   },

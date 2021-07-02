@@ -9,7 +9,7 @@ const styles = (Colors)=> StyleSheet.create({
         justifyContent: 'center',
     },  
     text: {
-        fontSize: 18,
+        fontSize: Fonts.size(19),
         color: Colors[colorNames.auth.coloredButtonText],
         fontFamily: Fonts.type.bold
     },

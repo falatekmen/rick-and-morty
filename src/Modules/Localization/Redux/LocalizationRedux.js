@@ -1,8 +1,8 @@
-
-/* ------------- Initial State ------------- */
-
 import { Locales } from "../LocalizationConstants";
 
+
+
+/* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = {
     locale: Locales.english,

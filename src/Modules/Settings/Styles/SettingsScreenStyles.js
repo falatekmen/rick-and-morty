@@ -7,44 +7,49 @@ export default Colors => StyleSheet.create({
         flex:1,
         backgroundColor:Colors[colorNames.settings.background],
     },
-    text1:{
-        marginTop:20,
-        marginBottom:3,
-        fontSize:25,
-
-        marginLeft:10,
+    SafeAreaView: {
+        flex:1,
+    },
+    displayName:{
+        marginTop: Metrics.width / 15,
+        marginBottom: Metrics.width / 120,
+        fontSize: Fonts.size(27),
+        marginLeft: Metrics.width / 24,
         color:Colors[colorNames.settings.username],
         fontFamily:Fonts.type.bold,
     },
-    text2:{
-        fontSize:23,
-
-        marginLeft:10,
-        color:Colors[colorNames.settings.eMail],
-        fontFamily:Fonts.type.light,
+    email:{
+        fontSize: Fonts.size(23),
+        marginLeft: Metrics.width / 24,
+        color: Colors[colorNames.settings.eMail],
+        fontFamily: Fonts.type.light,
     },
     optionContainer:{
-        flex:0.5,
-        marginHorizontal:15,
-        marginTop:30,
+        flex:1,
+        marginHorizontal: Metrics.width / 24,
+        marginTop: Metrics.width / 12,
         flexGrow:1,
+    },
+    signOutContainer: {
+        justifyContent:'center', 
+        alignItems:'center'
     },
     signOutTouchable:{
         justifyContent:"center",
         alignItems:"center",
-        borderWidth:3,
+        borderWidth: Metrics.width / 120,
         borderColor:Colors[colorNames.settings.signOutBorder],
-        borderRadius:10,
-        height:60,
-        marginBottom:10,
-        marginHorizontal:20,
+        borderRadius: Metrics.width / 20,
+        height: Metrics.width / 9,
+        width: Metrics.width / 1.4,
+        marginBottom: Metrics.width / 36,
+        marginHorizontal: Metrics.width / 18,
         backgroundColor:Colors[colorNames.settings.signOutButtonBackground],
         fontFamily:Fonts.type.light,
     },
-    toucableText:{
+    signOutText:{
         color:Colors[colorNames.settings.signOutText],
-        fontSize:20,
+        fontSize: Fonts.size(20),
         fontFamily:Fonts.type.bold,
-        marginBottom:Metrics.width*0.02,
     },
 })
