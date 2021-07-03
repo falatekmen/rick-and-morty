@@ -7,12 +7,14 @@ import { texts, useLocalization } from "../Localization";
 import { colorNames, useThemedValues } from "../Theming";
 import getStyles from "./Styles/HomeNavigationStyles";
 import { Fonts } from '../../StylingConstants';
+import EpisodeDetailScreen from '../EpisodeDetailScreen/EpisodeDetailScreen';
+import CharacterDetailScreen from '../CharacterDetailScreen/CharacterDetailScreen'
 
 
 const HomeStack = createStackNavigator();
 
 const HomeNavigation = () => {
-    
+
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
 
@@ -35,6 +37,40 @@ const HomeNavigation = () => {
                 }}
             />
             <HomeStack.Screen
+                name="episode-detail-screen"
+                component={EpisodeDetailScreen}
+                options={{
+                    title: loc.t(texts.episodeTitle),
+                    headerStyle: {
+                        backgroundColor: colors[colorNames.home.headerColor],
+                    },
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        color: colors[colorNames.home.headerText],
+                        fontFamily: Fonts.type.bold
+                    },
+                    headerTintColor: 'white',
+                    headerRight: SettingsIcon
+                }}
+            />
+            <HomeStack.Screen
+                name="character-detail-screen"
+                component={CharacterDetailScreen}
+                options={{
+                    title: loc.t(texts.characterTitle),
+                    headerStyle: {
+                        backgroundColor: colors[colorNames.home.headerColor],
+                    },
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        color: colors[colorNames.home.headerText],
+                        fontFamily: Fonts.type.bold
+                    },
+                    headerTintColor: 'white',
+                    headerRight: SettingsIcon
+                }}
+            />
+            <HomeStack.Screen
                 name="settings-screen"
                 component={SettingsScreen}
                 options={{
@@ -49,7 +85,7 @@ const HomeNavigation = () => {
                         fontFamily: Fonts.type.bold
                     }
                 }}
-            />  
+            />
         </HomeStack.Navigator>
     );
 };

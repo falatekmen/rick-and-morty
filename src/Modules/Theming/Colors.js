@@ -1,12 +1,12 @@
 // hex
 const constantColors = {
     white: '#FFFFFF',
-    black: '#2D2D2D', 
+    black: '#2D2D2D',
     transparent: 'transparent',
-    blue: '#189ad3', 
+    blue: '#189ad3',
     darkblack: 'black',
     headerColorLight: '#FF9900',
-    headerColorDark: 'black',  
+    headerColorDark: 'black',
     appBackgroundLight: '#E5DFCA',
     appBackgroundDark: '#061602',
 
@@ -47,10 +47,10 @@ export const colorNames = {
     },
     home: {
         headerColor: 'home/headerColor',
-        homeBackground: 'home/homeBackGround', 
-        headerText:"home/headerText", 
-        buttonBorder:"home/buttonBorder",
-        buttonBackground:"home/episodeButton", 
+        homeBackground: 'home/homeBackGround',
+        headerText: "home/headerText",
+        buttonBorder: "home/buttonBorder",
+        buttonBackground: "home/episodeButton",
         underline: "home/underline",
         episodeText: "home/episodeText"
     },
@@ -64,15 +64,19 @@ export const colorNames = {
         titleColor: 'settings/titleColor',
         username: "settings/username",
         eMail: "settings/eMail",
-        tintColor:"settings/tintColor",
+        tintColor: "settings/tintColor",
         headerColor: "settings/headerColor",
         headerText: "settings/headerText",
+    },
+    details: {
+        background: 'detail/background',
+        text: 'detail/detailText',
     },
 };
 
 export const darkColors = {
     // auth
-    [colorNames.auth.background]: constantColors.appBackgroundDark, 
+    [colorNames.auth.background]: constantColors.appBackgroundDark,
     [colorNames.auth.paleButtonText]: constantColors.white,
     [colorNames.auth.appNameText]: constantColors.blue,
     [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.white, 40),
@@ -92,7 +96,7 @@ export const darkColors = {
     [colorNames.home.buttonBackground]: constantColors.greys[2],
     [colorNames.home.underline]: constantColors.darkblack,
     [colorNames.home.episodeText]: constantColors.darkblack,
-    
+
     //settings
     [colorNames.settings.background]: constantColors.appBackgroundDark,
     [colorNames.settings.radioButtonSelected]: constantColors.blue,
@@ -106,17 +110,21 @@ export const darkColors = {
     [colorNames.settings.tintColor]: constantColors.white,
     [colorNames.settings.headerColor]: constantColors.headerColorDark,
     [colorNames.settings.headerText]: constantColors.white,
+
+    //details
+    [colorNames.details.background]: constantColors.appBackgroundDark,
+    [colorNames.details.text]: constantColors.white,
 };
 
 export const lightColors = {
     // auth
-    [colorNames.auth.background]: constantColors.appBackgroundLight, 
+    [colorNames.auth.background]: constantColors.appBackgroundLight,
     [colorNames.auth.paleButtonText]: constantColors.black,
     [colorNames.auth.appNameText]: constantColors.blue,
     [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.black, 50),
     [colorNames.auth.appIcon]: constantColors.blue,
     [colorNames.auth.coloredButtonBackground]: constantColors.white,
-    [colorNames.auth.inputBorder]: constantColors.blue, 
+    [colorNames.auth.inputBorder]: constantColors.blue,
     [colorNames.auth.coloredButtonText]: constantColors.black,
     [colorNames.auth.inputBackground]: toRGBA(constantColors.black, 3),
     [colorNames.auth.paleButtonBackground]: constantColors.transparent,
@@ -132,7 +140,7 @@ export const lightColors = {
     [colorNames.home.episodeText]: constantColors.darkblack,
 
     //settings
-    [colorNames.settings.background]: constantColors.appBackgroundLight, 
+    [colorNames.settings.background]: constantColors.appBackgroundLight,
     [colorNames.settings.radioButtonSelected]: constantColors.blue,
     [colorNames.settings.radioButtonUnselected]: constantColors.black,
     [colorNames.settings.signOutBorder]: constantColors.headerColorLight,
@@ -144,4 +152,8 @@ export const lightColors = {
     [colorNames.settings.tintColor]: constantColors.white,
     [colorNames.settings.headerColor]: constantColors.headerColorLight,
     [colorNames.settings.headerText]: constantColors.white,
+
+    //details
+    [colorNames.details.background]: constantColors.appBackgroundDark,
+    [colorNames.details.text]: constantColors.black,
 };

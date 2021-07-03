@@ -4,7 +4,7 @@ const type = {
     light: 'Segoe UI',
     bold: 'Segoe UI Bold',
     boldItalic: 'Segoe UI Bold Italic',
-	italic: 'Segoe UI Italic',
+	  italic: 'Segoe UI Italic',
    };
    
    const step = Metrics.width * 0.0025;
