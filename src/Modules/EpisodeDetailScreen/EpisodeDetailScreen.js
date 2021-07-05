@@ -6,89 +6,98 @@ import Axios from '../../API/AxiosConfig'
 import { FlatList } from 'react-native-gesture-handler';
 import { texts, useLocalization } from "../Localization";
 
-const dummyEpisode = {
-    "id": 1,
-    "name": "Pilot",
-    "air_date": "December 2, 2013",
-    "episode": "S01E01",
-    "characters": [
-        "https://rickandmortyapi.com/api/character/1",
-        "https://rickandmortyapi.com/api/character/2",
-        "https://rickandmortyapi.com/api/character/35",
-        "https://rickandmortyapi.com/api/character/38",
-        "https://rickandmortyapi.com/api/character/62",
-        "https://rickandmortyapi.com/api/character/92",
-        "https://rickandmortyapi.com/api/character/127",
-        "https://rickandmortyapi.com/api/character/144",
-        "https://rickandmortyapi.com/api/character/158",
-        "https://rickandmortyapi.com/api/character/175",
-        "https://rickandmortyapi.com/api/character/179",
-        "https://rickandmortyapi.com/api/character/181",
-        "https://rickandmortyapi.com/api/character/239",
-        "https://rickandmortyapi.com/api/character/249",
-        "https://rickandmortyapi.com/api/character/271",
-        "https://rickandmortyapi.com/api/character/338",
-        "https://rickandmortyapi.com/api/character/394",
-        "https://rickandmortyapi.com/api/character/395",
-        "https://rickandmortyapi.com/api/character/435"
-    ],
-    "url": "https://rickandmortyapi.com/api/episode/1",
-    "created": "2017-11-10T12:56:33.798Z"
-}
+const dummyCharacter = [{
+    "created": "2017-12-31T20:39:35.047Z",
+    "episode": ["https://rickandmortyapi.com/api/episode/3"],
+    "gender": "Male",
+    "id": 300,
+    "image": "https://rickandmortyapi.com/api/character/avatar/300.jpeg",
+    "location": { "name": "Anatomy Park", "url": "https://rickandmortyapi.com/api/location/5" },
+    "name": "Roger",
+    "origin": { "name": "Earth (C-137)", "url": "https://rickandmortyapi.com/api/location/1" },
+    "species": "Human",
+    "status": "Dead",
+    "type": "",
+    "url": "https://rickandmortyapi.com/api/character/300"
+}]
 
 const EpisodeDetailScreen = (props) => {
 
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
 
-    const [characterList, setCharacterList] = useState([])
+    //render edilecek karakterlerin listesi- flatlist
+    const [characterList, setCharacterList] = useState([
+    ])
 
-    // test api for characters in episode
+    //bölüm detayları
+    const [episodeDetail, setEpisodeDetail] = useState([])
+
+    // homescreende bu ekrana navigate ederken gelen parametrelerin alınması
+    const { episodeId } = props.route.params
+
+    // homescreende seçilen bölümün detayları
     useEffect(() => {
-        Axios.get('character')
+        Axios.get('episode/' + episodeId)
             .then(response => {
-                let characters = response.data.results
-                setCharacterList(characters)
+                let episodeDetail = response.data
+                setEpisodeDetail(episodeDetail)
+
+                //bölümde bulunan karakterlerin id'lerini, gelen datadadaki url'lerin son kısmından alma
+                for (var i = 0; i < episodeDetail.characters.length; i++) {
+                    var charactersUrlInEpisode = episodeDetail.characters[i]
+                    var charactersIdInUrl = charactersUrlInEpisode.slice(42, charactersUrlInEpisode.length)
+
+                    // karakter id'leri ile API den karakter detaylarının çekilip state'e atılması
+                    takeCharacters(charactersIdInUrl)
+                }
             })
             .catch(error => {
                 console.log(error)
             })
     }, [])
 
-    const _renderCharactersItem = ({ item }) => {
+    // verilen id'ye göre karakter detaylarını api'den çekilmesi
+    const takeCharacters = (id) => {
+        Axios.get('character/' + id)
+            .then(response => {
+                let characterDetail = response.data
+                setCharacterList(characterDetail)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
+    const _renderCharactersItem = ({ item }) => {
+        console.log('flatlist')
         return (
-            <View style={styles.characterButton}>
-                <Text style={styles.characterNameText} numberOfLines={1}>{item.name}</Text>
-            </View>
+            <TouchableOpacity onPress={() => {
+                props.navigation.navigate("character-detail-screen", {
+                    characterId: item.id
+                });
+            }}>
+                <View style={styles.characterButton}>
+                    <Text style={styles.characterNameText} numberOfLines={1}>{item.name}</Text>
+                </View>
+            </TouchableOpacity>
         )
     }
 
-    const _onPress_Episode = () => {
-        props.navigation.navigate("character-detail-screen");
-    }
-
-    //homescreende bu ekrana navigate ederken gelen parametreleri bu şekilde alıyoruz
-    const { dummy1, dummy2 } = props.route.params
-
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={_onPress_Episode}>
-                <Text style={{ color: 'white' }}>{dummy1 + " " + dummy2}</Text>
-            </TouchableOpacity>
             <View style={styles.episodeNameContainer}>
-                <Text style={styles.episodeNameText}>{dummyEpisode.name}</Text>
+                <Text style={styles.episodeNameText}>{episodeDetail.name}</Text>
             </View>
             <View style={styles.detailsContainer}>
-                <Text style={styles.detailsText}>{loc.t(texts.season)}{dummyEpisode.episode.slice(1, 3)}</Text>
-                <Text style={styles.detailsText}>{loc.t(texts.episode)}{dummyEpisode.episode.slice(4, 6)}</Text>
-                <Text style={styles.detailsText}>{loc.t(texts.airDate)} {dummyEpisode.air_date}</Text>
+                <Text style={styles.detailsText}>{loc.t(texts.episode)}{episodeDetail.episode}</Text>
+                <Text style={styles.detailsText}>{loc.t(texts.airDate)} {episodeDetail.air_date}</Text>
             </View>
             <View style={styles.characterTitleContainer}>
                 <Text style={styles.characterTitleText}>{loc.t(texts.characters)}</Text>
             </View>
             <FlatList
-                data={characterList}
+                data={dummyCharacter} // !!!
                 renderItem={_renderCharactersItem}
                 keyExtractor={item => item.id}
                 style={styles.flatListContainer}

@@ -36,8 +36,6 @@ const styles = (Colors) => StyleSheet.create({
         color: Colors[colorNames.details.text], 
         fontSize: Fonts.size(28), 
         fontFamily: Fonts.type.light,
-        borderBottomWidth: Metrics.width / 180, 
-        borderColor: Colors[colorNames.details.text] 
     },
     detailsContainer:{
         marginLeft: Metrics.width / 14, 
