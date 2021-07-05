@@ -5,29 +5,40 @@ import getStyles from "./Styles/CharacterDetailScreenStyles";
 import Axios from '../../API/AxiosConfig'
 import { texts, useLocalization } from "../Localization";
 
-const character = {
-    "id": 1,
-    "name": "Rick Sanchez",
-    "status": "Alive",
-    "species": "Human",
-    "type": "",
-    "gender": "Male",
-    "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
-    },
-    "location": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
-    },
-    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-}
 
-const CharacterDetailScreen = () => {
+const CharacterDetailScreen = (props) => {
 
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
 
+    const [character, setCharacter] = useState({
+        "created": "", 
+        "episode": [], 
+        "gender": "", 
+        "id": 0, 
+        "image": " ", // fix "source.uri should not be an empty screen" warning -> " ", undefined, "x", default image url
+        "location": {"name": "", "url": ""}, 
+        "name": "", 
+        "origin": {"name": "", "url": ""}, 
+        "species": "", 
+        "status": "", 
+        "type": "", 
+        "url": ""
+    })
+
+    const { characterId } = props.route.params
+
+    useEffect(()=>{
+        Axios.get('character/'+characterId)
+            .then(response =>{
+                characterDetail = response.data
+                setCharacter(characterDetail)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },[])
+ 
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
