@@ -6,20 +6,7 @@ import Axios from '../../API/AxiosConfig'
 import { FlatList } from 'react-native-gesture-handler';
 import { texts, useLocalization } from "../Localization";
 
-const dummyCharacter = [{
-    "created": "2017-12-31T20:39:35.047Z",
-    "episode": ["https://rickandmortyapi.com/api/episode/3"],
-    "gender": "Male",
-    "id": 300,
-    "image": "https://rickandmortyapi.com/api/character/avatar/300.jpeg",
-    "location": { "name": "Anatomy Park", "url": "https://rickandmortyapi.com/api/location/5" },
-    "name": "Roger",
-    "origin": { "name": "Earth (C-137)", "url": "https://rickandmortyapi.com/api/location/1" },
-    "species": "Human",
-    "status": "Dead",
-    "type": "",
-    "url": "https://rickandmortyapi.com/api/character/300"
-}]
+
 
 const EpisodeDetailScreen = (props) => {
 
@@ -45,8 +32,9 @@ const EpisodeDetailScreen = (props) => {
 
                 //bölümde bulunan karakterlerin id'lerini, gelen datadadaki url'lerin son kısmından alma
                 for (var i = 0; i < episodeDetail.characters.length; i++) {
-                    var charactersUrlInEpisode = episodeDetail.characters[i]
-                    var charactersIdInUrl = charactersUrlInEpisode.slice(42, charactersUrlInEpisode.length)
+                    const charactersUrlInEpisode = episodeDetail.characters[i]
+                    const splittedUrl = charactersUrlInEpisode.split("/");
+                    const charactersIdInUrl = splittedUrl[splittedUrl.length - 1]
 
                     // karakter id'leri ile API den karakter detaylarının çekilip state'e atılması
                     takeCharacters(charactersIdInUrl)
@@ -62,7 +50,7 @@ const EpisodeDetailScreen = (props) => {
         Axios.get('character/' + id)
             .then(response => {
                 let characterDetail = response.data
-                setCharacterList(characterDetail)
+                setCharacterList(characterList => [...characterList,characterDetail]) 
             })
             .catch(error => {
                 console.log(error)
@@ -70,7 +58,6 @@ const EpisodeDetailScreen = (props) => {
     }
 
     const _renderCharactersItem = ({ item }) => {
-        console.log('flatlist')
         return (
             <TouchableOpacity onPress={() => {
                 props.navigation.navigate("character-detail-screen", {
@@ -97,7 +84,7 @@ const EpisodeDetailScreen = (props) => {
                 <Text style={styles.characterTitleText}>{loc.t(texts.characters)}</Text>
             </View>
             <FlatList
-                data={dummyCharacter} // !!!
+                data={characterList} 
                 renderItem={_renderCharactersItem}
                 keyExtractor={item => item.id}
                 style={styles.flatListContainer}
